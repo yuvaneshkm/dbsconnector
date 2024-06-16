@@ -1,17 +1,18 @@
 # importing necessary libraries
 import pandas as pd
-from pathlib import Path
 from pymongo.mongo_client import MongoClient
+from typing import List, Dict
+from pathlib import Path
 
 # load csv file:
-def load_csv(filepath:str, delimiter:str):
+def load_csv(filepath:Path, delimiter:str):
     filepath = Path(filepath)
-    return pd.read_csv(filepath, delimiter=delimiter)
+    return pd.read_csv(str(filepath), delimiter=delimiter)
     
 # load excel sheet
-def load_excelsheet(filepath:str, sheet_name:str):
+def load_excelsheet(filepath:Path, sheet_name:str):
     filepath = Path(filepath)
-    return pd.read_excel(filepath, sheet_name=sheet_name)
+    return pd.read_excel(str(filepath), sheet_name=sheet_name)
 
 # load google sheet 
 def load_gsheet(gsheet_id:str, sheet_name:str):
@@ -22,11 +23,11 @@ def load_gsheet(gsheet_id:str, sheet_name:str):
 
 # load mongodb data:
 def load_mongodbdata(host:str, database:str, collection:str):
-    client = MongoClient(host)
+    client: MongoClient = MongoClient(host)
     db = client[database]
     col = db[collection]
     records = col.find()
-    data = list(records)
+    data: List[Dict] = list(records)
     df = pd.DataFrame(data)
     df.drop('_id', axis=1, inplace=True)
     return df
