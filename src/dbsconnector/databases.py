@@ -1,10 +1,7 @@
 # importing necessary libraries
 import pandas as pd
 from pathlib import Path
-import pymysql
 from pymongo.mongo_client import MongoClient
-from typing import Optional
-
 
 # load csv file:
 def load_csv(filepath:str, delimiter:str):
