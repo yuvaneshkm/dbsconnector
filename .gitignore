@@ -1,5 +1,5 @@
-# folders and files
-experiments/
+# password files:
+mysql_password.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

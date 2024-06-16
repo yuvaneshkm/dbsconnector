@@ -20,7 +20,6 @@ def load_gsheet(gsheet_id:str, sheet_name:str):
     base_url = 'https://docs.google.com/spreadsheets/d'
     sheet_csv = 'gviz/tq?tqx=out:csv&sheet='
     url = f'{base_url}/{gsheet_id}/{sheet_csv}{sheet_name}'
-    url = Path(url)
     return pd.read_csv(url)
 
 # load mysql data:
