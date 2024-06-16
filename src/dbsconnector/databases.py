@@ -23,15 +23,6 @@ def load_gsheet(gsheet_id:str, sheet_name:str):
     url = f'{base_url}/{gsheet_id}/{sheet_csv}{sheet_name}'
     return pd.read_csv(url)
 
-# load mysql data:
-def load_mysqldata(host:str, user:str, password:str, database:str, table:str):
-    db: Optional[pymysql.Connection] = None
-    db = pymysql.connect(host=host, user=user, passwd=password, database=database)
-    cur = db.cursor()
-    query = f'select * from {table}'
-    cur.close()
-    return pd.read_sql(query, db)
-
 # load mongodb data:
 def load_mongodbdata(host:str, database:str, collection:str):
     client = MongoClient(host)
@@ -42,4 +33,3 @@ def load_mongodbdata(host:str, database:str, collection:str):
     df = pd.DataFrame(data)
     df.drop('_id', axis=1, inplace=True)
     return df
-

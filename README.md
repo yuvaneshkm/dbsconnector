@@ -1,7 +1,7 @@
 # Database Connector Package
 
 # Overview
-**dbsconnector** is a Python package designed to simplify the process of connecting to different data sources like csv files, excel sheets, google sheets,MySQL database,MongoDB database etc. This package provides a streamlined API for loading the data from different sources and return as Pandas DataFrame for any kind of DataScience, DataAnalysis and MachineLearning purpose.
+**dbsconnector** is a Python package designed to simplify the process of connecting to different data sources like csv files, excel sheets, google sheets, MongoDB database etc. This package provides a streamlined API for loading the data from different sources and return as Pandas DataFrame for any kind of DataScience, DataAnalysis and MachineLearning purpose.
 
 # Features
 * Easy connection to multiple data sources
@@ -117,20 +117,6 @@ df
 from dbsconnector import databases
 # load the data:
 df = databases.load_gsheet('17r9f4BL7sjmdLBnt92OdQP3CHK5bdT3hozg6DUJXGqU', 'sample_sheet')
-# display the data:
-df
-```
-
-### Connecting to MySQL
-```py
-# import the module:
-from dbsconnector import databases
-# load the data:
-# You can store your database password in a different text file and add the text file to .gitignore file
-with open('mysql_password.txt', 'r') as f:
-    password = f.read()
-f.close()
-df = databases.load_mysqldata('localhost', 'root', password, 'sample_database', 'sample_table')
 # display the data:
 df
 ```
