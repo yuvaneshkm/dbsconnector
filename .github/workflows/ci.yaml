@@ -30,5 +30,14 @@ jobs:
         pip install flake8 pytest black mypy
         pip install tox==3.24.4
         pip install -r requirements.txt
+
+    - name: Display Python version and installed packages
+      run: |
+        python --version
+        pip list
+
+
     - name: Test with tox
       run: tox
+      env:
+        TOX_ENV: py${{ matrix.python-version }}-${{ matrix.os }}
