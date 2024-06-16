@@ -1,8 +1,9 @@
 # importing necessary libraries
 import pandas as pd
 from pathlib import Path
-from pymysql import connect
+import pymysql
 from pymongo.mongo_client import MongoClient
+from typing import Optional
 
 
 # load csv file:
@@ -24,9 +25,11 @@ def load_gsheet(gsheet_id:str, sheet_name:str):
 
 # load mysql data:
 def load_mysqldata(host:str, user:str, password:str, database:str, table:str):
-    db = connect(host=host, user=user, passwd=password, database=database)
+    db: Optional[pymysql.Connection] = None
+    db = pymysql.connect(host=host, user=user, passwd=password, database=database)
     cur = db.cursor()
     query = f'select * from {table}'
+    cur.close()
     return pd.read_sql(query, db)
 
 # load mongodb data:
