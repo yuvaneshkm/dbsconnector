@@ -3,3 +3,4 @@ openpyxl==3.1.4
 pandas==2.2.2
 pymongo==4.7.3
 PyMySQL==1.1.1
+types-PyMySQL

@@ -8,3 +8,4 @@ pymongo==4.7.3
 PyMySQL==1.1.1
 pytest==8.2.2
 tox==3.24.4
+types-PyMySQL
